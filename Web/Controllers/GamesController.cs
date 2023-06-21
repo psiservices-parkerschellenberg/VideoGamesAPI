@@ -3,6 +3,10 @@ using Insight.Database;
 using Web.Models;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Data;
+//using System.Data.Common;
+using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -12,12 +16,19 @@ namespace Web.Controllers
     [ApiController]
     public class GamesController : ControllerBase
     {
+        private readonly IDbConnection _dbConnection;
+
+        public GamesController(IConfiguration configuration)
+        {
+            var connectionString = configuration.GetConnectionString("DefaultConnection");
+            _dbConnection = new SqlConnection(connectionString);
+        }
+
         // GET: api/Games
         [HttpGet]
         public IEnumerable<Game> Get()
         {
-            var connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=GamesDB;Integrated Security=True");
-            return connection.Query<Game>("GetAllGames");
+            return _dbConnection.Query<Game>("GetAllGames");
         }
 
         // GET api/Games/5

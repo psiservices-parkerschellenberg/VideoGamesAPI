@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Insight.Database;
 using Web.Models;
-using System.Collections.Generic;
+//using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Data;
 //using System.Data.Common;
-using System.Threading.Tasks;
-using Microsoft.Extensions.Configuration;
+//using System.Threading.Tasks;
+//using Microsoft.Extensions.Configuration;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Insight.Database;
 using Web.Models;
+using Web.ViewModels;
 //using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Data;
@@ -40,8 +41,16 @@ namespace Web.Controllers
 
         // POST api/Games
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Post([FromBody] AddGame request)
         {
+            var game = new Game
+            {
+                Title = request.Title,
+                ReleaseDate = request.ReleaseDate,
+                Developer = request.Developer,
+                Price = request.Price
+            };
+            _dbConnection.Execute("AddGame", game);
         }
 
         // PUT api/Games/5

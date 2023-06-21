@@ -54,12 +54,26 @@ namespace Web.Controllers
 
         // PUT api/Games/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public void Put(int id, [FromBody] GameNoID request)
         {
+            var game = _dbConnection.Query<Game>("GetGameById", new { Id = id });
+
+            if (game != null)
+            {
+                var updatedGame = new Game
+                {
+                    Id = id,
+                    Title = request.Title,
+                    ReleaseDate = request.ReleaseDate,
+                    Developer = request.Developer,
+                    Price = request.Price
+                };
+                _dbConnection.Execute("UpdateGame", updatedGame);
+            }
         }
 
-            // DELETE api/Games/5
-            [HttpDelete("{id}")]
+        // DELETE api/Games/5
+        [HttpDelete("{id}")]
         public void Delete(int id)
         {
         }

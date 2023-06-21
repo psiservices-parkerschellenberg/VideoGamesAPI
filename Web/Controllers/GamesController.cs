@@ -33,9 +33,9 @@ namespace Web.Controllers
 
         // GET api/Games/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public IEnumerable<Game> Get(int id)
         {
-            return "value";
+            return _dbConnection.Query<Game>("GetGameById", new { Id = id });
         }
 
         // POST api/Games

@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Insight.Database;
 using Web.Models;
-using Web.ViewModels;
 //using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Data;
@@ -41,9 +40,9 @@ namespace Web.Controllers
 
         // POST api/Games
         [HttpPost]
-        public void Post([FromBody] AddGame request)
+        public void Post([FromBody] GameNoID request)
         {
-            var game = new Game
+            var game = new GameNoID
             {
                 Title = request.Title,
                 ReleaseDate = request.ReleaseDate,
@@ -59,8 +58,8 @@ namespace Web.Controllers
         {
         }
 
-        // DELETE api/Games/5
-        [HttpDelete("{id}")]
+            // DELETE api/Games/5
+            [HttpDelete("{id}")]
         public void Delete(int id)
         {
         }

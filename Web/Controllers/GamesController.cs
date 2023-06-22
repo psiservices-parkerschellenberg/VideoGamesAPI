@@ -69,6 +69,8 @@ namespace Web.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            _dbConnection.Execute("DeleteGameById", new { Id = id });
         }
+
     }
 }

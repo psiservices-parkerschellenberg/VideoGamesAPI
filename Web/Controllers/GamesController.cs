@@ -40,16 +40,9 @@ namespace Web.Controllers
 
         // POST api/Games
         [HttpPost]
-        public void Post([FromBody] GameNoID request)
+        public void Post([FromBody] GameNoID newGame)
         {
-            var game = new GameNoID
-            {
-                Title = request.Title,
-                ReleaseDate = request.ReleaseDate,
-                Developer = request.Developer,
-                Price = request.Price
-            };
-            _dbConnection.Execute("AddGame", game);
+            _dbConnection.Execute("AddGame", newGame);
         }
 
         // PUT api/Games/5

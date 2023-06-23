@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[GamesNew]
 (
-	[Id] INT NOT NULL PRIMARY KEY, 
+	[Id] INT IDENTITY(1,1) NOT NULL PRIMARY KEY, 
     [Title] VARCHAR(50) NOT NULL, 
     [ReleaseDate] DATE NOT NULL, 
     [Developer] VARCHAR(50) NULL, 
